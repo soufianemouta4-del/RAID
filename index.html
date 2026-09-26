@@ -412,7 +412,7 @@
     <p class="launch-label">OUVERTURE OFFICIELLE</p>
     <p class="launch-date">Lundi 28 septembre</p>
 
-    <div class="countdown" role="timer" aria-live="polite" aria-label="Temps restant avant l'ouverture de Riad Galerie">
+    <div class="countdown" role="timer" aria-label="Temps restant avant l'ouverture de Riad Galerie">
       <div class="unit"><span class="num" id="days">00</span><span class="label">Jours</span></div>
       <span class="sep">:</span>
       <div class="unit"><span class="num" id="hours">00</span><span class="label">Heures</span></div>
@@ -455,6 +455,8 @@
     function pad(n){ return String(n).padStart(2, '0'); }
 
     function render(){
+      if (!elDays || !elHours || !elMinutes || !elSeconds) return;
+
       var now = new Date();
       var diff = target - now;
 
@@ -480,10 +482,16 @@
       elSeconds.textContent = pad(seconds);
     }
 
-    render();
     var timer = setInterval(render, 1000);
+    render();
   })();
 </script>
+
+<noscript>
+  <style>
+    .countdown { display:none; }
+  </style>
+</noscript>
 
 </body>
 </html>
