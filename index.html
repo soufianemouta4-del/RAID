@@ -442,49 +442,7 @@
 </div>
 
 <script>
-  (function(){
-    // Official opening: Monday, September 28, 2026, 10:00 local time to the visitor
-    var target = new Date(2026, 8, 28, 10, 0, 0);
 
-    var elDays = document.getElementById('days');
-    var elHours = document.getElementById('hours');
-    var elMinutes = document.getElementById('minutes');
-    var elSeconds = document.getElementById('seconds');
-    var ctaText = document.querySelector('.cta-text');
-
-    function pad(n){ return String(n).padStart(2, '0'); }
-
-    function render(){
-      if (!elDays || !elHours || !elMinutes || !elSeconds) return;
-
-      var now = new Date();
-      var diff = target - now;
-
-      if (diff <= 0){
-        elDays.textContent = '00';
-        elHours.textContent = '00';
-        elMinutes.textContent = '00';
-        elSeconds.textContent = '00';
-        if (ctaText) ctaText.textContent = 'Riad Galerie est ouverte.';
-        clearInterval(timer);
-        return;
-      }
-
-      var totalSeconds = Math.floor(diff / 1000);
-      var days = Math.floor(totalSeconds / 86400);
-      var hours = Math.floor((totalSeconds % 86400) / 3600);
-      var minutes = Math.floor((totalSeconds % 3600) / 60);
-      var seconds = totalSeconds % 60;
-
-      elDays.textContent = pad(days);
-      elHours.textContent = pad(hours);
-      elMinutes.textContent = pad(minutes);
-      elSeconds.textContent = pad(seconds);
-    }
-
-    var timer = setInterval(render, 1000);
-    render();
-  })();
 </script>
 
 <noscript>
